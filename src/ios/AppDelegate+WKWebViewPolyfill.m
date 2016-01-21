@@ -44,6 +44,10 @@ NSString* appDataFolder;
     // Note: the embedded webserver is still needed for iOS 9. It's not needed to load index.html,
     //       but we need it to ajax-load files (file:// protocol has no origin, leading to CORS issues).
     NSString *directoryPath = myMainViewController.wwwFolderName;
+    if(_webServer)
+	{
+	    [_webServer stop];
+	}
     _webServer = [[GCDWebServer alloc] init];
     _webServerOptions = [NSMutableDictionary dictionary];
 
